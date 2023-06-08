@@ -17,7 +17,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['title', 'author', 'book_number', 'description', 'date_addedd', 'genre', 'language',
+        fields = ['title', 'author', 'book_number', 'description', 'date_added', 'genre', 'language',
                   'price', 'discount_price']
 
     author = serializers.HyperlinkedRelatedField(

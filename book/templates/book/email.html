@@ -1,0 +1,20 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Email</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>This is a html template email</h1>#}
+{#    <p>Sent by {{ name }}</p>#}
+{#</body>#}
+{#</html>#}
+
+{% block subject %}
+This is the subject
+{% endblock %}
+
+{% block html_body %}
+    <h1>This is a html content</h1>
+    This is sent from {{ name }}
+{% endblock %}

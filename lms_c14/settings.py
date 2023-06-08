@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'djoser',
-    'book'
+    'book',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,6 @@
-from django.core.mail import send_mail
-from django.http import HttpResponse, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.http import HttpResponse
+from templated_mail.mail import BaseEmailMessage
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -27,10 +28,22 @@ class AuthorViewSet(ModelViewSet):
 
 def send_mail_function(request):
     try:
-        send_mail("Library Message", "Your book order is now available", "allwell@gmail.com", ["ojo@gmail.com"])
+        # Simple pattern send mail
+        # message = EmailMessage("Library Message", "Your book order is now available", "allwell@gmail.com", ["ojo@gmail.com"])
+        # message.attach_file("book/static/images/MOSTBEAUTIFULplace 1.jpg")
+        # message.send()
+
+        # HTML message pattern here
+        # template is how we pass information inside our template
+        message = BaseEmailMessage(
+            context={"name": "Allwell"}, template_name='book/email.html'
+        )
+
+        message.send(['elishaallwell1759@gmail.com'])
+
     except BadHeaderError:
         pass
-    return HttpResponse('ok')
+    return HttpResponse('Message Sent!')
 
 
 class BookViewSet(ModelViewSet):
