@@ -39,7 +39,7 @@ def send_mail_function(request):
             context={"name": "Allwell"}, template_name='book/email.html'
         )
 
-        message.send(['elishaallwell1759@gmail.com'])
+        message.send(['elishaallwell@gmail.com'])
 
     except BadHeaderError:
         pass
